@@ -13,6 +13,7 @@ public class TestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//master
+		//second
 		super.doGet(req, resp);
 		req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}

@@ -25,8 +25,63 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <profiles>
+      <!-- 开发环境 -->
+      <profile>
+            <id>dev</id>
+            <properties>
+                <deploy.env>dev</deploy.env>
+            </properties>
+        </profile>
+        <!-- 测试环境 -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <deploy.env>test</deploy.env>
+            </properties>
+        </profile>
+  </profiles>	
   <build>
+      <resources>
+	   <resource>
+            <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+             <directory>src/main/resources/${deploy.env}</directory>
+                 <includes>
+                    <include >**/*.*</include>
+                </includes> 
+                 <filtering>true</filtering> 
+            </resource>
+      </resources>  
       <plugins>
+	   <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-resources-plugin</artifactId>
+		<version>2.6</version>
+		<configuration>
+			<encoding>UTF-8</encoding>
+		</configuration>
+	   </plugin> 
+	   <plugin>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>3.1</version>
+		<configuration>
+		  <source>1.7</source>
+		  <target>1.7</target>
+		</configuration>
+	   </plugin>
+           <plugin>
+		<artifactId>maven-war-plugin</artifactId>
+		<version>2.3</version>
+		<configuration>
+		  <warSourceDirectory>WebContent</warSourceDirectory>
+		  <failOnMissingWebXml>false</failOnMissingWebXml>
+		</configuration>
+           </plugin>
 	   <plugin>
 	      <groupId>org.apache.tomcat.maven</groupId>
 	      <artifactId>tomcat7-maven-plugin</artifactId>

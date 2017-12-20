@@ -16,7 +16,7 @@ public class TestServlet extends HttpServlet {
 		//second
 		//third	
 		super.doGet(req, resp);
-		System.out.println("----------------------------------");
+		System.out.println("--------------1111111--------------------");
 		req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}
 }

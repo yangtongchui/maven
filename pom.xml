@@ -42,6 +42,7 @@
         </profile>
   </profiles>	
   <build>
+      <finalName>maven</finalName>
       <resources>
 	   <resource>
             <directory>src/main/java</directory>
